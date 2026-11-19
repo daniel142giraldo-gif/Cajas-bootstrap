@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        :root {
+            --verde: #202435;
+            --marino: #7665B5;
+            --lila: #292D40;
+            --borde: #45435F;
+        }
+
+        body {
+            font-family: system-ui, Segoe UI, Roboto, sans-serif;
+            color: #E1E1EA;
+            background: #171A27;
+        }
+
+        .caja1 {
+            min-height: 100px;
+            background: var(--verde);
+            padding: 15px;
+        }
+
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, .08);
+            color: #fff;
+            border: 2px solid #77718F;
+            border-radius: 8px;
+            padding: 6px 14px;
+            text-decoration: none;
+            transition: .2s;
+        }
+
+        .btn-nav:hover,
+        .btn-nav.activo {
+            background: #7665B5;
+            color: #fff;
+            border-color: #7665B5;
+        }
+
+        .btn-nav:focus-visible {
+            outline: 3px solid #A99AE3;
+            outline-offset: 2px;
+        }
+
+        footer {
+            background: var(--verde);
+            color: #fff;
+            text-align: center;
+            padding: 18px;
+            margin-top: 40px;
+        }
+
+        /* Contenido principal */
+        .articulo {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 15px;
+        }
+
+        .articulo h1 {
+            color: #D0CEDA;
+            font-weight: 800;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .articulo p {
+            font-size: 1.05rem;
+            line-height: 1.65;
+        }
+
+        .articulo h2 {
+            color: #C5C3D1;
+            font-weight: 800;
+            font-size: 1.7rem;
+            margin: 0 0 12px;
+        }
+
+        .linea {
+            width: 32px;
+            border-top: 3px solid #B47BC6;
+            margin: 36px 0 14px;
+        }
+
+        .capa {
+            background: var(--lila);
+            border: 1px solid var(--borde);
+            border-radius: 14px;
+            padding: 18px 20px;
+            height: 100%;
+        }
+
+        .capa h3 {
+            color: #C9C4DC;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .capa p {
+            font-size: .95rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Representación del Box Model */
+        .bm {
+            margin: 36px auto 0;
+            max-width: 360px;
+            background: #45334F;
+            padding: 24px;
+            border: 2px dashed #A56DB5;
+            text-align: center;
+            color: #fff;
+        }
+
+        .bm div {
+            padding: 20px;
+        }
+
+        .b {
+            background: #5D4775;
+            border: 3px solid #A56DB5;
+        }
+
+        .p {
+            background: #49606C;
+        }
+
+        .c {
+            background: #344A5E;
+            padding: 22px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .bm small {
+            display: block;
+            font-weight: 600;
+        }
+
+        @media (max-width:575.98px) {
+            .btn-nav {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .articulo h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="caja1 d-flex flex-wrap align-items-center justify-content-center gap-2" aria-label="Principal">
+
+        <a class="btn-nav" href="index.html">
+            Estructura y sintaxis <i class="bi bi-code-slash"></i>
+        </a>
+
+        <a class="btn-nav" href="especificidad.html">
+            <span>Niveles de especificidad</span>
+            <i class="bi bi-layers"></i>
+        </a>
+
+        <a class="btn-nav" href="pseudo.html">
+            <span>Pseudo Clases y Pseudo Elementos</span>
+            <i class="bi bi-cursor"></i>
+        </a>
+
+        <a class="btn-nav activo" href="Boxmodel.html">
+            <span>Box Model</span>
+            <i class="bi bi-bounding-box"></i>
+        </a>
+
+    </nav>
+
+    <main class="articulo">
+
+        <h1>Modelo de caja en CSS: conceptos esenciales para el desarrollo web</h1>
+
+        <p>En esta sección conoceremos el <b>Box Model de CSS</b>, un concepto esencial que permite comprender de qué manera se organizan y distribuyen los elementos dentro de un sitio web.</p>
+
+        <p>¿Te ha pasado que un botón no queda ubicado en el lugar esperado o que un contenedor termina ocupando más espacio del que habías calculado? Esto ocurre por la forma en que funciona el modelo de caja. Aprenderemos sus características y cómo aplicarlo para conseguir páginas web mejor organizadas y con diseños más ordenados.</p>
+
+        <p>A continuación, conoceremos cada una de sus partes y explicaremos su funcionamiento de manera sencilla.</p>
+
+        <div class="linea"></div>
+
+        <h2>¿En qué consiste el Box Model?</h2>
+
+        <p>Podemos entender cada elemento HTML de una página como una <b>caja</b> que ocupa un espacio determinado. Sin embargo, no está formada únicamente por la información que contiene, sino que también posee diferentes secciones que controlan sus dimensiones y la distancia con los demás elementos. Sus componentes principales son:</p>
+
+        <div class="row g-3">
+
+            <div class="col-12 col-md-6">
+                <div class="capa">
+                    <h3>1. Content (contenido)</h3>
+                    <p>Corresponde a la parte interna donde se encuentra la información del elemento, como textos, fotografías y otros recursos.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="capa">
+                    <h3>2. Padding (relleno)</h3>
+                    <p>Es la separación interna que existe entre el contenido y los bordes que lo rodean.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="capa">
+                    <h3>3. Border (borde)</h3>
+                    <p>Es la línea exterior encargada de delimitar el contenido junto con el espacio interno del elemento.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="capa">
+                    <h3>4. Margin (margen)</h3>
+                    <p>Representa la distancia externa que permite mantener separado un elemento de los demás componentes de la página.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bm">
+            <small>margin</small>
+            <div class="b">
+                <small>border</small>
+                <div class="p">
+                    <small>padding</small>
+                    <div class="c">content</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

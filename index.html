@@ -1,265 +1,353 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura y sintaxis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <title>Maqueta</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-    <!-- Estilos personalizados -->
     <style>
+        :root {
+            --fondo: #171A27;
+            --navegacion: #202435;
+            --violeta: #7665B5;
+            --gris-titulo: #D0CEDA;
+            --gris-claro: #C5C3D1;
+        }
+
+        body {
+            font-family: system-ui, Segoe UI, Roboto, sans-serif;
+            background: var(--fondo);
+            color: #E1E1EA;
+        }
+
+        /* BARRA DE NAVEGACIÓN */
         .caja1 {
             min-height: 100px;
-            background-color: #969ac0;
+            background: var(--navegacion);
+            padding: 15px;
         }
 
-        .caja2 {
-            min-height: 300px;
-            background-color: #618b9e;
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, .08);
+            color: #D0CEDA;
+            border: 2px solid #77718F;
+            border-radius: 8px;
+            padding: 6px 14px;
+            text-decoration: none;
+            transition: .2s;
         }
 
-        .caja3 {
-            min-height: 300px;
-            background-color: #6546d3;
+        .btn-nav:hover,
+        .btn-nav.activo {
+            background: var(--violeta);
+            color: #fff;
+            border-color: var(--violeta);
         }
 
-        .caja4 {
-            min-height: 300px;
-            background-color: #296b85;
+        .btn-nav:focus-visible {
+            outline: 3px solid #A99AE3;
+            outline-offset: 2px;
         }
 
-        .caja5 {
-            min-height: 300px;
-            background-color: #096774;
+        /* SECCIONES CON IMÁGENES */
+        .panel {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 26px;
+            color: #E1E1EA;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
 
-        .caja6 {
-            min-height: 300px;
-            background-color: #294fb9;
+        .panel h2,
+        .panel h3 {
+            color: #D0CEDA;
+            font-weight: 700;
+            margin: 0 0 6px;
         }
 
-        .caja7 {
-            min-height: 300px;
-            background-color: #a887be;
+        .panel p {
+            margin: 0;
+            font-size: .85rem;
         }
 
-        .caja8 {
-            min-height: 300px;
-            background-color: #9190dd;
+        .panel a {
+            color: #D5C9F0;
+            text-decoration: none;
         }
 
-        .caja9 {
-            min-height: 300px;
-            background-color: #83e7e7;
+        .panel a:hover {
+            color: #fff;
+            text-decoration: underline;
         }
 
-        .caja10 {
-            min-height: 300px;
-            background-color: #f3474dda;
+        /* PORTADA PRINCIPAL */
+        .hero {
+            min-height: 400px;
+            background-image: linear-gradient(90deg, rgba(15, 16, 30, .85), rgba(30, 27, 49, .35)), url(img/hero.jpg);
+            background-color: #222435;
+            justify-content: center;
+            padding: 40px 32px;
         }
 
-        .banner {
-            width: 100%;
-            height: auto;
+        .hero h1 {
+            color: #D0CEDA;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .hero .sub {
+            color: #D0CEDA;
+            font-size: 1.15rem;
+            line-height: 1.5;
+            margin-bottom: 28px;
+        }
+
+        .hero h2 {
+            color: #C9C4DC;
+            font-size: 1.5rem;
+        }
+
+        .hero .btn {
+            width: max-content;
+            background: #7665B5;
+            border-color: #7665B5;
+        }
+
+        .hero .btn:hover {
+            background: #635398;
+            border-color: #635398;
+        }
+
+        /* TARJETAS PRINCIPALES */
+        .fila2 .panel {
+            min-height: 272px;
+        }
+
+        .fila3 .panel {
+            min-height: 208px;
+        }
+
+        .icono {
+            font-size: 2.6rem;
+            line-height: 1;
+            margin-bottom: 6px;
+            color: #B9A9EF;
+        }
+
+        .html {
+            background-image: linear-gradient(0deg, rgba(20, 24, 43, .85), rgba(20, 24, 43, .3)), url(img/html.jpg);
+            background-color: #252D49;
+        }
+
+        .css {
+            background-image: linear-gradient(0deg, rgba(20, 24, 43, .85), rgba(20, 24, 43, .3)), url(img/css.jpg);
+            background-color: #293C59;
+        }
+
+        .bootstrap {
+            background-image: linear-gradient(0deg, rgba(32, 24, 48, .85), rgba(32, 24, 48, .3)), url(img/bootstrap.jpg);
+            background-color: #49375F;
+        }
+
+        /* SECCIONES SECUNDARIAS */
+        .nav-rapida {
+            background-image: linear-gradient(0deg, rgba(20, 26, 43, .85), rgba(20, 26, 43, .3)), url(img/navegacion.jpg);
+            background-color: #26384C;
+        }
+
+        .alumnos {
+            background-image: linear-gradient(0deg, rgba(40, 30, 49, .85), rgba(40, 30, 49, .4)), url(img/alumnos.jpg);
+            background-color: #51405B;
+            align-items: center;
+            text-align: center;
+        }
+
+        .practico {
+            background-image: linear-gradient(0deg, rgba(30, 34, 49, .85), rgba(30, 34, 49, .5)), url(img/practico.jpg);
+            background-color: #34394B;
+            align-items: center;
+            text-align: center;
+        }
+
+        .acceso {
+            background-image: linear-gradient(0deg, rgba(25, 35, 54, .85), rgba(25, 35, 54, .4)), url(img/acceso.jpg);
+            background-color: #26384D;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contacto {
+            background-image: linear-gradient(0deg, rgba(28, 29, 43, .85), rgba(28, 29, 43, .3)), url(img/contacto.jpg);
+            background-color: #343443;
+        }
+
+        .dato {
+            color: #D0CEDA;
+            font-size: 1.9rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .links a {
             display: block;
+            font-size: 1.05rem;
+            margin-top: 8px;
+        }
+
+        /* ADAPTACIÓN A DIFERENTES PANTALLAS */
+        @media (min-width:576px) and (max-width:1199.98px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+
+        @media (max-width:575.98px) {
+            .btn-nav {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 360px;
+                padding: 28px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .fila2 .panel {
+                min-height: 220px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container-fluid p-0">
 
-            <!-- CAJA 1: NAVEGACIÓN -->
-            <nav class="col-12 caja1 d-flex p-4 justify-content-center align-items-center flex-wrap gap-3"
-                aria-label="Navegación principal">
+        <nav class="caja1 d-flex flex-wrap align-items-center justify-content-center gap-2" aria-label="Principal">
 
-                <a class="btn btn-outline-light" href="#estructura" role="button">
-                    Estructura y sintaxis
-                </a>
+            <a class="btn-nav activo" href="estructura.html">
+                Estructura y sintaxis <i class="bi bi-code-slash"></i>
+            </a>
 
-                <img src="./img/Icono1.png" height="50" alt="Icono de estructura" loading="lazy">
+            <a class="btn-nav" href="especificidad.html">
+                <span>Niveles de especificidad</span>
+                <i class="bi bi-layers"></i>
+            </a>
 
-                <a class="btn btn-outline-light" href="#especificidad" role="button">
-                    Niveles de especificidad
-                </a>
+            <a class="btn-nav" href="pseudo.html">
+                <span>Pseudo Clases y Pseudo Elementos</span>
+                <i class="bi bi-cursor"></i>
+            </a>
 
-                <img src="./img/Icono1.png" height="50" alt="Icono de especificidad" loading="lazy">
+            <a class="btn-nav" href="Boxmodel.html">
+                <span>Box Model</span>
+                <i class="bi bi-bounding-box"></i>
+            </a>
 
-                <a class="btn btn-outline-light" href="pseudo.html" role="button">
-                    Pseudo Clases y Pseudo Elementos
-                </a>
+        </nav>
 
-                <img src="./img/Icono1.png" height="50" alt="Icono de pseudo clases" loading="lazy">
+        <header class="panel hero">
 
-                <a class="btn btn-outline-light" href="#boxmodel" role="button">
-                    Box Model
-                </a>
+            <h1>CSS FÁCIL</h1>
 
-                <img src="./img/Icono1.png" height="50" alt="Icono de Box Model" loading="lazy">
+            <p class="sub">
+                Aprendizaje interactivo y visual - SENA Cenigraf ADSO<br>
+                Bogotá - Colombia
+            </p>
 
-            </nav>
+            <h2><i class="bi bi-mortarboard-fill"></i> Aprende Desarrollo Web</h2>
 
-            <!-- ENCABEZADO -->
-            <header class="col-12 caja1 d-flex justify-content-center align-items-center">
-                <h2 class="text-white text-center">
-                    Digital Academy - Aprende Programación
-                </h2>
-            </header>
+            <p class="mb-3">
+                Aprende a construir sitios web con HTML5, CSS3 y Bootstrap mediante diseños profesionales.
+            </p>
 
-            <!-- BANNER -->
-            <div class="col-12 p-0">
-                <img src="./img/banner1.png" alt="Foto de aprendices aprendiendo CSS" class="banner">
-            </div>
+            <a class="btn btn-primary" href="#cursos">
+                <i class="bi bi-play-circle"></i> Explorar Cursos
+            </a>
 
-            <!-- CAJA 2: BANNER / HERO -->
-            <div
-                class="col-12 caja2 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
+        </header>
 
-                <h1>Domina el mundo digital</h1>
+        <section class="row g-0 fila2" id="cursos">
 
-                <p class="lead">
-                    Desarrolla tus habilidades creando sitios web y aplicaciones desde cero.
-                </p>
+            <article class="col-12 col-md-4 panel html">
+                <i class="bi bi-filetype-html icono"></i>
+                <h3>Organización HTML</h3>
+                <p>Construye estructuras de código semántico que favorezcan la accesibilidad y el posicionamiento web.</p>
+            </article>
 
-                <a href="#estructura" class="btn btn-primary btn-lg">
-                    Comienza ahora
-                </a>
-
-            </div>
-
-            <!-- CAJAS 3, 4 Y 5: TARJETAS DE CARACTERÍSTICAS -->
-
-            <div id="estructura" class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 caja3 p-4 text-white"
-                style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./img/html.png') center/cover no-repeat;">
-
-                <h3>Fundamentos de HTML</h3>
-
-                <p>
-                    Construye páginas web mediante etiquetas que permiten organizar y estructurar el contenido.
-                </p>
-
-            </div>
-
-            <div id="especificidad" class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 caja4 p-4 text-white"
-                style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./img/css.jpg') center/cover no-repeat;">
-
+            <article class="col-12 col-md-4 panel css">
+                <i class="bi bi-filetype-css icono"></i>
                 <h3>Diseño con CSS</h3>
+                <p>Personaliza tus elementos utilizando estilos, combinaciones de colores, fuentes y efectos visuales.</p>
+            </article>
 
-                <p>
-                    Personaliza tus páginas web con estilos modernos, animaciones y diseños adaptables.
-                </p>
+            <article class="col-12 col-md-4 panel bootstrap">
+                <i class="bi bi-bootstrap-fill icono"></i>
+                <h3>Herramientas Bootstrap 5</h3>
+                <p>Facilita la creación de páginas web aprovechando sus componentes y su sistema de columnas.</p>
+            </article>
 
+        </section>
+
+        <section class="row g-0 fila3">
+
+            <div class="col-12 col-sm-6 col-lg-3 panel nav-rapida">
+                <h3><i class="bi bi-compass"></i> Accesos Directos</h3>
+
+                <div class="links">
+                    <a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank" rel="noopener">
+                        <i class="bi bi-book"></i> Material de consulta
+                    </a>
+
+                    <a href="pseudo.html">
+                        <i class="bi bi-laptop"></i> Actividades y ejemplos
+                    </a>
+                </div>
             </div>
 
-            <div id="pseudo" class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 caja5 p-4 text-white"
-                style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./img/bbo.jpeg') center/cover no-repeat;">
-
-                <h3>Herramientas Bootstrap</h3>
-
-                <p>
-                    Crea interfaces profesionales utilizando plantillas, columnas y elementos interactivos.
-                </p>
-
+            <div class="col-6 col-sm-6 col-lg-2 panel alumnos">
+                <i class="bi bi-people-fill icono"></i>
+                <div class="dato">+500</div>
+                <p>Estudiantes inscritos</p>
             </div>
 
-            <!-- CAJAS 6 A 10: SECCIÓN INFERIOR -->
-
-            <div id="boxmodel"
-                class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 caja6 p-3 text-white d-flex flex-column align-items-center align-items-xl-start">
-
-                <h5>Recursos de Aprendizaje</h5>
-
-                <img src="./img/imagen5.png" alt="Icono de navegación" class="img-fluid mb-2"
-                    style="max-height: 150px; width: auto;" loading="lazy">
-
-                <ul class="list-unstyled text-center text-xl-start">
-                    <li>
-                        <a href="#" class="text-white text-decoration-none">
-                            Guías de programación
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-white text-decoration-none">
-                            Proyectos prácticos
-                        </a>
-                    </li>
-                </ul>
-
+            <div class="col-6 col-sm-4 col-lg-2 panel practico">
+                <div class="dato">100%</div>
+                <p>Aprendizaje aplicado</p>
             </div>
 
-            <div
-                class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2 caja7 p-3 text-white d-flex flex-column align-items-center justify-content-center text-center">
-
-                <h4>+800</h4>
-
-                <small class="mb-2">
-                    Desarrolladores formados
-                </small>
-
-                <img src="./img/imagen4.png" alt="Icono de alumnos" class="img-fluid"
-                    style="max-height: 150px; width: auto;" loading="lazy">
-
+            <div class="col-6 col-sm-4 col-lg-2 panel acceso">
+                <i class="bi bi-infinity icono"></i>
+                <div class="dato">24/7</div>
+                <p>Disponibilidad permanente</p>
             </div>
 
-            <div
-                class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 caja8 p-3 text-white d-flex flex-column align-items-center justify-content-center text-center">
-
-                <h4>100%</h4>
-
-                <small class="mb-2">
-                    Aprendizaje aplicado
-                </small>
-
-                <img src="./img/imagen3.png" alt="Icono de práctico" class="img-fluid"
-                    style="max-height: 150px; width: auto;" loading="lazy">
-
+            <div class="col-6 col-sm-4 col-lg-3 panel contacto">
+                <h3><i class="bi bi-person-lines-fill"></i> Información de contacto</h3>
+                <p><i class="bi bi-envelope"></i> contacto@ejemplo.com</p>
+                <p class="mt-2" style="font-size:.75rem">© 2026 Mi Maqueta</p>
             </div>
 
-            <div
-                class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 caja9 p-3 text-white d-flex flex-column align-items-center justify-content-center text-center">
+        </section>
 
-                <h4>Todo el tiempo</h4>
-
-                <small class="mb-2">
-                    Plataforma disponible
-                </small>
-
-                <img src="./img/imagen1.png" alt="Icono de acceso ilimitado" class="img-fluid"
-                    style="max-height: 150px; width: auto;" loading="lazy">
-
-            </div>
-
-            <div
-                class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 caja10 p-3 text-white d-flex flex-column align-items-center align-items-xl-start">
-
-                <h5>Comunícate con nosotros</h5>
-
-                <img src="./img/imagen2.png" alt="Icono de contacto" class="img-fluid mb-2"
-                    style="max-height: 150px; width: auto;" loading="lazy">
-
-                <p class="small text-center text-xl-start mb-0">
-                    soporte@programacion.com<br>
-                    © 2026 Academia Digital
-                </p>
-
-            </div>
-
-        </div>
     </div>
 
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>
